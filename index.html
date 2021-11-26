@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PA questionaire</title>
+    <style>
+        .html {
+            font-size: 62.5%;
+        }
+
+        :root {
+            --with-wrapper: 98 rem; 
+        }
+        .wrapper, .data-wrapper {
+            width: var(--with-wrapper);
+            display: flex;
+            gap: 2rem;
+        }
+        .left-col, .right-col {
+            width: 50%;
+        }
+        table, tr, td {
+            border: 1px solid;
+        }
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: auto;
+            background-color: #f1f1f1;
+        }
+
+        @media screen and (max-width: 750px) {
+            :root {
+                --with-wrapper: 100%; 
+            }
+            .wrapper {
+                flex-direction: column;
+            }
+
+            .wrapper > .left-col, .right-col {
+            width: 100%;
+        }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Nghiên cứu hoạt động thụ phấn qua sinh cảnh <a href="https://drive.google.com/file/d/1wFgbLbVmHq0tdFphRWHJfZuPeod869B8/view?usp=sharing" target="_blank">(Diagram)</a></h1>
+    </header>
+    <div class="wrapper">
+        <div class="left-col">
+            <button type="button" class="collapsible">Bảng 1. Bảng thông tin thể hiện tập tính của loài ong</button>
+            <div class="content">
+                <br>
+                <table>
+                    <tr>
+                        <td>SPECIES</td>
+                        <td>nesting_suitability_[SUBSTRATE]_index</td>
+                        <td>foraging_activity_[SEASON]_index</td>
+                        <td>alpha</td>
+                        <td>relative_abundace</td>
+                    </tr>
+                    <tr>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                </table>
+                <ol>
+                    <li>SPECIES: khoảng cách tối đa mà một tác nhân đe dọa có thể ảnh hưởng (có thể sử dụng công cụ stressor buffer trong QGIS (ArcGIS,...) để biểu diễn)</li>
+                    <li>nesting_suitability_[SUBSTRATE]_index: Giá trị thuộc đoạn [0;1], với 1 cho biết chất nền làm tổ được sử dụng hết và 0 cho biết chất nền làm tổ hoàn toàn không được sử dụng.</li>
+                    <li>foraging_activity_[SEASON]_index: Chỉ số hoạt động thu thức ăn theo mùa [Season]</li>
+                    <li>alpha: Trung bình khoảng cách bay mỗi loài hoặc tập tính di chuyển tới nguồn thức ăn trên hoa màu.</li>
+                    <li>relative_abundace: Giá trị thực chỉ ra mức độ hoạt động tương đối của loài đóng góp vào sự hoạt động của các loài thụ phấn.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="right-col">
+            <button type="button" class="collapsible">Bảng 2. Độ nhạy của sinh cảnh đối với tác nhân đe dọa được nêu tại bảng 1</button>
+            <div class="content">
+                <br>
+                <table>
+                    <tr>
+                        <td>LULC</td>
+                        <td>Descrip</td>
+                        <td>nest_[SUBSTRATE]_availability_index</td>
+                        <td>floral_resources_[SEASON]_index</td>
+                    </tr>
+                    <tr>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                </table>
+                <ol>
+                    <li>LULC: thể hiện id của lớp Land use land cover được giải đoán trong ảnh vệ tinh</li>
+                    <li>Descrip: Tên của lớp LULC được giải đoán (lý thuyết: tùy chọn, nhưng nên đặt theo nguồn dữ liệu)</li>
+                    <li>nest_[SUBSTRATE]_availability_index: Chỉ số tương đối về tính khả dụng của kiểu tổ đã cho trong mỗi kiểu LULC<br> 
+                    <li>floral_resources_[SEASON]_index: chỉ số nguồn hoa màu có trong mùa</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="data">
+        <h2>Lựa chọn các câu hỏi nghiên cứu</h2>
+        <div class="data-wrapper">
+            <div class="left-col">
+                <h3>Bảng 1</h3>     
+                <ol>
+                    <li><span style="text-decoration: underline;">Trả lời cho SPECIES: </span><br>
+                        Có bao nhiêu loài ong xuất hiện tại địa phương? <br>
+                        Chúng là các loài ong gì? (gồm loài ong mật và loài ong khác?)
+                    </li>
+                    <li><span style="text-decoration: underline;">Trả lời cho nesting_suitability_[SUBSTRATE]_index: </span><br>
+                        Trong tự nhiên, vị trí làm tổ của các loài ong này ở đâu (treo dưới cành cây lớn, trong các bộng cây, hốc cây, dưới vách đá,…)? (có khác nhau giữa các loài ong hay không?) <br>
+                        Trong đó, vị trí làm tổ nào là chủ yếu?
+                    </li>
+                    <li><span style="text-decoration: underline;">Trả lời cho foraging_activity_[SEASON]_index và alpha:</span><br>
+                        Những loài cây nào cung cấp nguồn phấn hoa, mật hoa cho các loài ong? <br>
+                        Vị trí các loài cây này ở đâu? (theo từng loài?) Ước tính khoảng cách bao nhiêu so với vị trí làm tổ ong trong tự nhiên và ong nuôi?
+                    </li>
+                    <li><span style="text-decoration: underline;">Trả lời cho RELATIVE_ABUNDACE:</span> <br>
+                        Loài ong nào chiếm ưu thế cao tại địa phương? <br>
+                        Nếu có thì mùa nào loài ong hoạt động thụ phấn nhiều nhất? (có khác nhau giữa các loài hay không?)</li>
+                </ol>
+            </div>
+            <div class="right-col">
+                <h3>Bảng 2</h3>
+                <ol>
+                    <li><span style="text-decoration: underline;">Trả lời cho nest_[SUBSTRATE]_availability_index: </span><br>
+                        Số lượng tổ ong trong tự nhiên được phát hiện nhiều hay ít tại địa phương? Ước lượng được không?
+                    </li>
+                    <li><span style="text-decoration: underline;">Trả lời cho floral_resources_[SEASON]_index:</span><br>
+                        Diện tích các loài cây này khoảng bao nhiêu? (theo từng loài?) <br>
+                        Mùa ra hoa của các loài cây này là mùa nào? (theo từng loài?) <br>
+                        Các loài cây này ra hoa đồng loạt cùng thời điểm một mùa hay chúng nở hoa không đồng loạt trong các mùa? 
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+    <script>
+             // Collapsible animation
+    {
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+        });
+        }
+    }
+    </script>
+</body>
+</html>
